@@ -1,0 +1,161 @@
+this task is about creating an HTML mailer.
+in this document i will explain to you our process and some basic mailer rules, let begin.
+
+##file instructions##
+
+- i filed you an example html mailers in the "html-ref" folder.
+- i filed you a psd mocap mailer in the "mocap" folder.
+- file all the final code(html) and final images(jpg) in the "mailer" folder together.
+
+##mocap instructions##
+
+when you cut images - i need a cut psd version in a separate file, one psd for every image that we need in the mailer with all the languages inside it.
+
+- file the button psd in the "button" folder.
+- file the header image psd in the "header" folder.
+- in the mocap you will see an offer in the content section, i know that psd font is not exact like in browser render,you will have to match it by the eye sometimes when needed, but most of the time if you take the same font size and line height from the mocap - it will be exact.
+
+##image instructions##
+
+1. all cutted images needs to go optimization and weight: 
+
+header image - max 600px width, up to 70k ( less is better).
+
+button image - up to 300px width, up to 10k (less is better)
+
+2. all image has to be only jpg, png can't be used.
+
+3. in the mocap you will have:
+- header image translations (if needed)
+- content offer translations (if needed)
+- button translations
+- signature image
+
+##code instructions##
+
+1.**Inlined style -** 
+CSS must be inlined within your HTML document.
+The major Web mail clients don’t support the <link> element, 
+meaning that external stylesheets aren’t usable.
+Leaving CSS styles in your email’s <head> isn’t an option either - Gmail strips the entire element from the HTML when an email is viewed either in its web or mobile clients. The simpler an email’s built and styled, the better the end result will be.
+
+2. **CSS support in email clients :**
+http://templates.mailchimp.com/resources/email-client-css-support/
+
+3. in the examples that i attached , you can see that alot of tags that we use have a css reset code attached to them inline, we use it to fix alot of problems that the browser is doing and overwrite alot of default email client(gmail...) css.
+
+4. all the images in the mailer have alt text behind them , to see it clearlly we destroy the "src=" attribute with "xsrc=" and we will see him like the email client shows us without display images.
+
+- **header alt text:** will be the brand name (parklane, euromoon, atlantic...) with background color of the base mailer and a white font color.
+- **button alt text:** 
+   a. will be with the image text per language with the image text color.
+   b. his background will be a sample color from the image button color - the closes color to the image button, the end result will be a flat design version of the button.
+   c. the alt text should be one line in all languages.
+
+5. all the color codes has to be with small letters and with the full color code like : #ffffff, #000000
+
+6. in mailers we use only the "arial" font , it's the best web safe font that matches all platforms and systems.
+
+7. in all our links we have an "name=" & "xt=", they are parameters of the email client that sends our emails(IBM marketing cloud), only the "unsubscribe here" link will never have a change.
+
+8. the "name=" needs to be exact the same in all languages and all links except the "unsubscribe here"
+
+9. <table> has to have all his attributes even if they are not in use.
+
+10. mailer spacings: you can't use margin or padding in mailers (only with the 0 value),  all the spacing can be control in a couple of ways:
+
+   a. <br />
+
+   b. line height in texts 
+
+   c. <table cellspacing=
+
+   d. <table cellpadding=
+
+   f. &nbsp;
+
+11. <div> is not allowed in html mailers , the use of <table> is the only use for a container tag for a block element.
+
+12. the mailer should work on mobile , the current code is responsive now with : max-width & min-width.
+
+13. in the code you will see a <style> in the <head> and in the <body> below, the css that is written is to overwrite some styles that the email client(outlook...) places, in this section we don't touch, at the end - the inline css will take his effect.
+
+14. all <img /> needs to be with the "width" attribute. 
+
+##code layout instructions##
+
+the mailer is build in section , here i will explain on each section.
+
+**snip text section -** it's always the first <p> in all html documents, in gmail we see it right after the subject line (email preview text in the right) 
+
+**header image section -** the image is always with a link and an alt text.
+
+**opening text section -** most of our mailers has an simple opening text that is a <p> that his css defined only for the simple small text, inside him we change with the <span> all the special sizes, colors.
+
+**content offer section -** most of the time the content offer looks like a box with big texts and he is before the button most of the time , if we have a <p> before him then we place him inside the <p> with <span> changes , only if it's not possible then we separate the offer to his own <p> with <span> has needed.
+
+**button section (CTA) -** the button can come in two ways:
+
+1. image
+
+2. <table> layout with live text
+i placed an example for both situations.
+in the image - he has a link over him
+in <table> layout - only the inner text is with a link.
+
+**signature section -** the signature is something that is repeated in all our mailers , it can come in two ways:  align to the left or center, here structure doesn't change. in the signature image we have an alt text - the alt text always the signature text itself, in one line and the simple text color of the email with an italic style.
+
+**footer section -** this section almost never changes in all our mailer , the texts stay the same , only different is the design.
+the "unsubscribe here" link never changes in all our mailers
+
+
+##name convension:##
+- languages letters for shortcuts and file naming: 
+
+english = EN
+german = DE
+france = FR
+italian = IT
+spanish = ES
+russian = RU
+Denmark = DA
+swiden = SV
+norwegian = NB
+finland = FI
+
+- header image should be "header_en.jpg, header_de.jpg ..."
+- button image should be "button_en.jpg, button_de.jpg..."
+- signature image should be "sig.jpg"
+- all file names should be with small letter and an underscore between spacings.
+- html document names: "index_en.html, index_de.html ..."
+
+##FINAL QA##
+
+1. check the html document code for spelling mistakes ,the browser fixes some code that we don't see the mistake in it, when we send a mailer - email clients can't fix the code then the end result can be catastrophic in the design and mailer functionality.
+
+2. check that all the image headers cutted like in the mocap psd 
+
+3. check that all the image buttons cutted like in the mocap psd
+
+4. check that the image signature cutted like in the mocap psd
+
+5. check that all alt text are right with there design
+
+6. check that all alt text translations are correct to the excel and designed like in the instructions.
+
+7. check that all mailer translations with the excel
+
+8. check that all links work
+
+9. check the mailer in chrome developing tools mobile view , the mailer needs to be responsive from iphone 4 (320px width) and newer.
+
+10. check that the spacing in the html is like in the mocap psd, it can't be exact but try to be close to the mocap design.
+
+11. check the code for not closes tags and fix if necessary
+
+12. check that all the images connected to the right html language ,
+example:
+index_en.html should be connected to the "header_en.jpg" locally with the "button_en.jpg" and a general "sig.jpg"(signature image).
+
+
+
